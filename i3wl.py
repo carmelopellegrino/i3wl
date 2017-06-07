@@ -27,6 +27,10 @@ def populate(widget, connection):
     for workspace in tree.workspaces():
         workspace_menu = gtk.MenuItem(workspace.name, True)
         submenu = gtk.Menu()
+        switch = gtk.ImageMenuItem(gtk.STOCK_GO_FORWARD)
+        switch.get_child().set_text("go to")
+        switch.connect('activate', WorkspaceSwitcher(connection, workspace.name).switch)
+        submenu.append(switch)
 
         for window in workspace.leaves():
             print " -", window.name
