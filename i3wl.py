@@ -22,6 +22,7 @@ def populate(widget):
 
 class Gui:
   def __init__(self):
+    self.i3 = i3ipc.Connection()
     self.statusIcon = gtk.StatusIcon()
     self.statusIcon.set_from_stock(gtk.STOCK_ABOUT)
     self.statusIcon.set_visible(True)
