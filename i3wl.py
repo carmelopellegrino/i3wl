@@ -6,6 +6,14 @@ pygtk.require('2.0')
 import gtk
 import i3ipc
 
+class Focuser(object):
+    def __init__(self, connection, wid):
+        self.id = wid
+        self.connection = connection
+
+    def focus(self, data):
+        self.connection.command('[con_id=%s] focus' % self.id)
+
 def populate(widget, connection):
     tree = connection.get_tree()
     for workspace in tree.workspaces():
