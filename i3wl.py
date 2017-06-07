@@ -31,6 +31,7 @@ def populate(widget, connection):
         switch.get_child().set_text("go to")
         switch.connect('activate', WorkspaceSwitcher(connection, workspace.name).switch)
         submenu.append(switch)
+        submenu.append(gtk.SeparatorMenuItem())
 
         for window in workspace.leaves():
             elem = gtk.MenuItem(window.name if len(window.name) < 30 else window.name[:27]+"..." )
@@ -55,6 +56,7 @@ class Gui:
     quit_item = gtk.ImageMenuItem(gtk.STOCK_QUIT)
     quit_item.connect('activate', gtk.main_quit, self.statusIcon)
     menu.append(quit_item)
+    menu.append(gtk.SeparatorMenuItem())
     populate(menu, self.i3)
     menu.show_all()
     return menu
