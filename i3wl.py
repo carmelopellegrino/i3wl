@@ -6,9 +6,8 @@ pygtk.require('2.0')
 import gtk
 import i3ipc
 
-def populate(widget):
-    i3 = i3ipc.Connection()
-    tree = i3.get_tree()
+def populate(widget, connection):
+    tree = connection.get_tree()
     for workspace in tree.workspaces():
         workspace_menu = gtk.MenuItem(workspace.name, True)
         submenu = gtk.Menu()
