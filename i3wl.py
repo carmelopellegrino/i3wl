@@ -14,7 +14,8 @@ def populate(widget):
         submenu = gtk.Menu()
 
         for window in workspace.leaves():
-            submenu.append(gtk.MenuItem(window.name))
+            print " -", window.name
+            submenu.append(gtk.MenuItem(window.name if len(window.name) < 30 else window.name[:27]+"..." ))
 
         workspace_menu.set_submenu(submenu)
         widget.append(workspace_menu)
