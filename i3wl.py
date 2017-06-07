@@ -22,7 +22,9 @@ def populate(widget, connection):
 
         for window in workspace.leaves():
             print " -", window.name
-            submenu.append(gtk.MenuItem(window.name if len(window.name) < 30 else window.name[:27]+"..." ))
+            elem = gtk.MenuItem(window.name if len(window.name) < 30 else window.name[:27]+"..." )
+            elem.connect('activate', Focuser(connection, window.id).focus)
+            submenu.append(elem)
 
         workspace_menu.set_submenu(submenu)
         widget.append(workspace_menu)
