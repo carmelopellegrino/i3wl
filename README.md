@@ -9,3 +9,8 @@ This applet shows an icon in the tray. Clicking on it shows a menu listing
 the workspaces, each of them containing the list of windows in that
 workspace. By clicking on a item the focus is raised on the corresponding
 window.
+
+# Requirements
+* python
+* PyGTK
+* i3ipc-python
