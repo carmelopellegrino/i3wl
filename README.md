@@ -11,6 +11,6 @@ workspace. By clicking on a item the focus is raised on the corresponding
 window.
 
 # Requirements
-* python
+* [Python](https://www.python.org) 2 (should work also in Python 3, but it's still untested)
 * [PyGTK](www.pygtk.org)
 * [i3ipc-python](https://github.com/acrisci/i3ipc-python)
