@@ -69,4 +69,3 @@ if __name__=='__main__':
         gtk.main()
     except:
         print 'Exception thrown... bye!'
-        pass
