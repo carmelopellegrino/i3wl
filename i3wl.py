@@ -34,7 +34,10 @@ def populate(widget, connection):
         submenu.append(gtk.SeparatorMenuItem())
 
         for window in workspace.leaves():
-            elem = gtk.MenuItem(window.name if len(window.name) < 30 else window.name[:27]+"..." )
+            text = window.name if len(window.name) < 30 else window.name[:27] + "..."
+            elem = gtk.MenuItem(text)
+            if window.urgent:
+                elem.get_children()[0].set_markup("<b><i>%s</i></b>" % text)
             elem.connect('activate', Focuser(connection, window.id).focus)
             submenu.append(elem)
 
