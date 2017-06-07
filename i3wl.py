@@ -14,6 +14,14 @@ class Focuser(object):
     def focus(self, data):
         self.connection.command('[con_id=%s] focus' % self.id)
 
+class WorkspaceSwitcher(object):
+    def __init__(self, connection, workspace):
+        self.workspace = workspace
+        self.connection = connection
+
+    def switch(self, data):
+        self.connection.command("workspace %s" % self.workspace)
+
 def populate(widget, connection):
     tree = connection.get_tree()
     for workspace in tree.workspaces():
