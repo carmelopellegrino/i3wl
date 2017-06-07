@@ -51,7 +51,7 @@ class Gui:
     self.statusIcon.connect('popup-menu', self.on_right_click)
     self.statusIcon.set_visible(True)
 
-  def on_right_click(self, widget, button, time):
+  def generate_menu(self):
     menu = gtk.Menu()
     quit_item = gtk.ImageMenuItem(gtk.STOCK_QUIT)
     quit_item.connect('activate', gtk.main_quit, self.statusIcon)
@@ -60,7 +60,11 @@ class Gui:
     entry = gtk.Entry()
     menu.append(entry)
     menu.show_all()
-    menu.popup(None, None, gtk.status_icon_position_menu, button, time, self.statusIcon)
+    return menu
+
+  def on_right_click(self, widget, button, time):
+    menu = self.generate_menu()
+    menu.popup(None, None, gtk.status_icon_position_menu, button, time, widget)
 
 if __name__=='__main__':
     try:
