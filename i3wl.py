@@ -73,4 +73,4 @@ if __name__=='__main__':
         gui=Gui()
         gtk.main()
     except:
-        print 'Exception thrown... bye!'
+        print('Exception thrown... bye!')
