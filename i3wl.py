@@ -35,7 +35,7 @@ class Gui:
       quit_item = gtk.ImageMenuItem(gtk.STOCK_QUIT)
       quit_item.connect('activate', gtk.main_quit, self.statusIcon)
       menu.append(quit_item)
-      populate(menu)
+      populate(menu, self.i3)
       menu.show_all()
       menu.popup(None, None, gtk.status_icon_position_menu, 3, time, self.statusIcon)
 
