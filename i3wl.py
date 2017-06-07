@@ -50,5 +50,9 @@ class Gui:
       menu.popup(None, None, gtk.status_icon_position_menu, 3, time, self.statusIcon)
 
 if __name__=='__main__':
-  gui=Gui()
-  gtk.main()
+    try:
+        gui=Gui()
+        gtk.main()
+    except:
+        print 'Exception thrown... bye!'
+        pass
