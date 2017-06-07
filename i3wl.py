@@ -60,7 +60,19 @@ class Gui:
     quit_item.connect('activate', gtk.main_quit, self.statusIcon)
     menu.append(quit_item)
     menu.append(gtk.SeparatorMenuItem())
-    populate(menu, self.i3)
+
+    try:
+        populate(menu, self.i3)
+    except i3ipc.socket.error as error:
+        print(error)
+        try:
+            self.i3 = i3ipc.Connection()
+            populate(menu, self.i3)
+        except i3ipc.socket.error as error:
+            item = gtk.MenuItem("")
+            item.get_children()[0].set_markup("<i>error connecting to i3wm: %s</i>" % error.strerror)
+            menu.append(item)
+
     menu.show_all()
     return menu
 
