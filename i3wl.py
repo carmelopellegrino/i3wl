@@ -48,18 +48,19 @@ class Gui:
     self.statusIcon.set_from_stock(gtk.STOCK_ABOUT)
     self.statusIcon.set_visible(True)
     self.statusIcon.set_tooltip("Windows list")
-    self.statusIcon.connect('popup-menu', self.popup_menu_cb, None)
+    self.statusIcon.connect('popup-menu', self.on_right_click)
     self.statusIcon.set_visible(True)
 
-  def popup_menu_cb(self, widget, button, time, data = None):
-    if button == 3:
-      menu = gtk.Menu()
-      quit_item = gtk.ImageMenuItem(gtk.STOCK_QUIT)
-      quit_item.connect('activate', gtk.main_quit, self.statusIcon)
-      menu.append(quit_item)
-      populate(menu, self.i3)
-      menu.show_all()
-      menu.popup(None, None, gtk.status_icon_position_menu, 3, time, self.statusIcon)
+  def on_right_click(self, widget, button, time):
+    menu = gtk.Menu()
+    quit_item = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+    quit_item.connect('activate', gtk.main_quit, self.statusIcon)
+    menu.append(quit_item)
+    populate(menu, self.i3)
+    entry = gtk.Entry()
+    menu.append(entry)
+    menu.show_all()
+    menu.popup(None, None, gtk.status_icon_position_menu, button, time, self.statusIcon)
 
 if __name__=='__main__':
     try:
