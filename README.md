@@ -12,5 +12,5 @@ window.
 
 # Requirements
 * python
-* PyGTK
-* i3ipc-python
+* [PyGTK](www.pygtk.org)
+* [i3ipc-python](https://github.com/acrisci/i3ipc-python)
