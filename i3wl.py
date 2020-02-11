@@ -24,7 +24,9 @@ class WorkspaceSwitcher(object):
 
 def populate(widget, connection):
     tree = connection.get_tree()
-    for workspace in tree.workspaces():
+    workspaces = tree.workspaces()
+    workspaces.sort()
+    for workspace in workspaces:
         workspace_menu = gtk.MenuItem(workspace.name, True)
         submenu = gtk.Menu()
         switch = gtk.ImageMenuItem(gtk.STOCK_GO_FORWARD)
